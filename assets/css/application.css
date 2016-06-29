@@ -1,0 +1,46 @@
+/*html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'PT Serif', serif
+}*/
+
+html, body {
+  height: 85%;
+  margin: 0;
+  padding: 0;
+  background-color: gray;
+}
+
+#map {
+  margin-top: 50px;
+  height: 60vh;
+  margin-right: 5%;
+  margin-left: 5%
+}
+
+
+input { 
+  width: 75%; 
+  height: 60px; 
+  font-size:24px;
+}
+
+label {
+  font-size:24px;
+}
+
+.search-info {  
+  margin-top: 30px;
+}
+
+#search-by-type {
+  width:150px; 
+}
+
+#total-distance {
+  text-align: center;
+  vertical-align: center;
+  margin-right: 125px;
+  font-size: 25px;
+}
+

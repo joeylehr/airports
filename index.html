@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Air Travel</title>
+  <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/application.css">
+
+
+</head>
+<body>
+
+<!-- User can choose how to search for the airport: city, airport code, airport name -->
+  <div class="search-selection">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-6">
+            <h3>Search by: 
+              <select id="search-by-type">
+                <option value="" disabled selected>Select your option</option>
+                <option value="City">City</option>
+                <option value="Airport Code">Airport Code</option>
+                <option value="Airport Name">Airport Name</option> 
+              </select>
+            </h3>          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="all-search-types">
+<!-- If User selects search by 'city', the below search option appears -->
+    <div class="search-info-by-city" id="city-search">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6" id="departure">
+            <label for="Departure"> Departure: </label> <br>
+            <input type="text"  id="city-search-destination-input" list="airport-dropdown-by-city" placeholder="Search by city...">
+            <datalist id="airport-dropdown-by-city"></datalist>
+            <div id="city-destination-coordinates"></div>
+            <div id="city-hidden-destination-coordinates" style="display: none;"></div>
+          </div>
+          <div class="col-md-6" id="arrival">
+            <label for="Departure"> Arrival: </label> <br>
+            <input type="text" id="city-search-arrival-input" list="airport-dropdown-by-city" placeholder="Search by city...">
+            <datalist id="airport-dropdown-by-city"></datalist>
+            <div id="city-arrival-coordinates"></div>
+            <div id="city-hidden-arrival-coordinates" style="display: none;"></div>
+            <div id="total-coordinates"></div>
+          </div>
+        </div>
+        <br><button type="button" class="btn btn-primary" id="city-search-button">Submit</button>
+      </div>
+    </div>
+
+  <!-- If User selects search by 'airport code', the below search option appears -->
+    <div class="search-info-by-code" id="airport-code-search">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6" id="departure">
+            <label for="Departure"> Departure: </label> <br>
+            <input type="text"  id="airport-code-search-destination-input" list="airport-dropdown-by-code" placeholder="Search by airport code...">
+            <datalist id="airport-dropdown-by-code"></datalist>
+            <div id="code-destination-coordinates"></div>
+            <div id="code-hidden-destination-coordinates" style="display: none;"></div>
+          </div>
+          <div class="col-md-6" id="arrival">
+            <label for="Departure"> Arrival: </label> <br>
+            <input type="text" id="airport-code-search-arrival-input" list="airport-dropdown-by-code" placeholder="Search by airport code...">
+            <datalist id="airport-dropdown-by-code"></datalist>
+            <div id="code-arrival-coordinates"></div>
+            <div id="code-hidden-arrival-coordinates" style="display: none;"></div>
+          </div>
+        </div>
+        <br><button type="button" class="btn btn-primary" id="airport-code-search-button">Submit</button>
+      </div>
+    </div>
+
+  <!-- If User selects search by 'airport name', the below search option appears -->
+    <div class="search-info-by-name" id="airport-name-search">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6" id="departure">
+            <label for="Departure"> Departure: </label> <br>
+            <input type="text"  id="airport-name-search-destination-input" list="airport-dropdown-by-name" placeholder="Search by airport name...">
+            <datalist id="airport-dropdown-by-name"></datalist>
+            <div id="name-destination-coordinates"></div>
+            <div id="name-hidden-destination-coordinates" style="display: none;"></div>
+          </div>
+          <div class="col-md-6" id="arrival">
+            <label for="Departure"> Arrival: </label> <br>
+            <input type="text" id="airport-name-search-arrival-input" list="airport-dropdown-by-name" placeholder="Search by airport name...">
+            <datalist id="airport-dropdown-by-name"></datalist>
+            <div id="name-arrival-coordinates"></div>
+            <div id="name-hidden-arrival-coordinates" style="display: none;"></div>
+          </div>
+        </div>
+        <br><button type="button" class="btn btn-primary" id="airport-name-search-button">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISPLAYS NAUTICAL MILES -->
+  <div class="container">
+    <div>
+      <div id="total-distance"></div>
+    </div>
+  </div>
+
+  <!-- GOOGLE MAP DISPLAY -->
+  <div id="map"></div>
+  
+
+  <!-- JAVASCRIPT -->
+  <script src="assets/js/jquery-2.2.2.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="assets/js/underscore.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYdo1wPD2kjB_k6gQElqL8IdFbuHPBs-0&callback=initMap"></script>
+  <script src="app.js"></script>
+
+  <!-- SEED FILE FOR AIRPORT INFORMATION -->
+  <script src="seed.js"></script>
+
+  <!-- AIRPORTS BY 'CONTROLLER' -->
+  <script src="airportByCity.js"></script>
+  <script src="airportByCode.js"></script>
+  <script src="airportByName.js"></script>
+
+</body>
+</html>
